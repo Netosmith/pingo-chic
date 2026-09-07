@@ -1,11 +1,12 @@
 name = "pingo-chic-api"
 main = "src/index.js"
-compatibility_date = "2026-09-01"
+compatibility_date = "2026-09-07"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "pingo-chic"
 database_id = "REPLACE_WITH_D1_DATABASE_ID"
 
-# Configure o segredo administrativo com:
+# Após criar o D1, substitua REPLACE_WITH_D1_DATABASE_ID pelo UUID retornado.
+# Configure o segredo administrativo somente no Cloudflare:
 # npx wrangler secret put ADMIN_TOKEN
