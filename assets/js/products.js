@@ -1,3 +1,5 @@
+import { fetchCatalog } from './api.js';
+
 export const products = [
   {id:1,name:'Vestido Florido',slug:'vestido-florido',theme:'fem',category:'vestido',price:89.90,oldPrice:109.90,badge:'Novidade',icon:'👗',rating:4.9,reviews:37,description:'Vestido leve e delicado para dias de passeio, festa e muita brincadeira. Modelagem confortável, acabamento suave e caimento soltinho.',colors:['Rosa','Lilás'],sizes:['2','4','6','8','10','12'],stock:{'Rosa|2':4,'Rosa|4':6,'Rosa|6':8,'Rosa|8':5,'Rosa|10':3,'Rosa|12':2,'Lilás|2':2,'Lilás|4':3,'Lilás|6':4,'Lilás|8':3,'Lilás|10':2,'Lilás|12':1},details:['Tecido leve e confortável','Acabamento delicado','Lavagem fácil','Produção selecionada para uso infantil'],images:[]},
   {id:2,name:'Conjunto Tule Rosa',slug:'conjunto-tule-rosa',theme:'fem',category:'conjunto',price:109.90,oldPrice:null,badge:'Mais vendido',icon:'🎀',rating:4.8,reviews:24,description:'Conjunto charmoso com visual delicado e confortável para ocasiões especiais sem perder a liberdade de brincar.',colors:['Rosa'],sizes:['2','4','6','8','10'],stock:{'Rosa|2':2,'Rosa|4':4,'Rosa|6':3,'Rosa|8':2,'Rosa|10':1},details:['Conjunto completo','Toque macio','Modelagem confortável'],images:[]},
@@ -8,6 +10,14 @@ export const products = [
   {id:7,name:'Boné Aventura',slug:'bone-aventura',theme:'masc',category:'acessorio',price:39.90,oldPrice:null,badge:'Acessório',icon:'🧢',rating:4.8,reviews:21,description:'Boné ajustável, leve e divertido para completar os looks de passeio.',colors:['Azul','Verde'],sizes:['Único'],stock:{'Azul|Único':8,'Verde|Único':7},details:['Ajuste traseiro','Leve e confortável'],images:[]},
   {id:8,name:'Conjunto Explorador',slug:'conjunto-explorador',theme:'masc',category:'conjunto',price:99.90,oldPrice:119.90,badge:'Oferta',icon:'🚙',rating:4.9,reviews:28,description:'Conjunto pronto para brincar com conforto e visual aventureiro.',colors:['Azul','Verde'],sizes:['2','4','6','8','10'],stock:{'Azul|2':2,'Azul|4':2,'Azul|6':2,'Azul|8':1,'Azul|10':1,'Verde|2':1,'Verde|4':2,'Verde|6':1,'Verde|8':1,'Verde|10':1},details:['Duas peças','Tecido confortável','Combinação prática'],images:[]}
 ];
+
+export async function loadLiveProducts(){
+  try{
+    const live = await fetchCatalog();
+    if(Array.isArray(live) && live.length){ products.splice(0, products.length, ...live); return true; }
+  }catch(error){ console.warn('[Pingo Chic] catálogo local em uso:', error.message); }
+  return false;
+}
 
 export const formatBRL = value => new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(value);
 export const getProduct = id => products.find(product => product.id === Number(id));
