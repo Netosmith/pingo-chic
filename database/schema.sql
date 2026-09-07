@@ -1,4 +1,4 @@
--- Pingo Chic | Cloudflare D1 initial schema
+-- Pingo Chic | Cloudflare D1 schema
 PRAGMA foreign_keys = ON;
 
 CREATE TABLE IF NOT EXISTS products (
@@ -10,6 +10,11 @@ CREATE TABLE IF NOT EXISTS products (
   category TEXT NOT NULL,
   price_cents INTEGER NOT NULL,
   old_price_cents INTEGER,
+  badge TEXT,
+  rating REAL NOT NULL DEFAULT 5,
+  reviews_count INTEGER NOT NULL DEFAULT 0,
+  images_json TEXT NOT NULL DEFAULT '[]',
+  details_json TEXT NOT NULL DEFAULT '[]',
   active INTEGER NOT NULL DEFAULT 1,
   created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -21,9 +26,14 @@ CREATE TABLE IF NOT EXISTS product_variants (
   sku TEXT UNIQUE,
   size TEXT,
   color TEXT,
-  stock INTEGER NOT NULL DEFAULT 0,
+  stock INTEGER NOT NULL DEFAULT 0 CHECK(stock >= 0),
+  active INTEGER NOT NULL DEFAULT 1,
   FOREIGN KEY(product_id) REFERENCES products(id) ON DELETE CASCADE
 );
+
+CREATE INDEX IF NOT EXISTS idx_products_active ON products(active);
+CREATE INDEX IF NOT EXISTS idx_products_theme_category ON products(theme, category);
+CREATE INDEX IF NOT EXISTS idx_variants_product ON product_variants(product_id);
 
 CREATE TABLE IF NOT EXISTS customers (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -71,7 +81,7 @@ CREATE TABLE IF NOT EXISTS order_items (
   variant_id INTEGER,
   product_name TEXT NOT NULL,
   unit_price_cents INTEGER NOT NULL,
-  quantity INTEGER NOT NULL,
+  quantity INTEGER NOT NULL CHECK(quantity > 0),
   FOREIGN KEY(order_id) REFERENCES orders(id) ON DELETE CASCADE
 );
 
