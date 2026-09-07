@@ -1,0 +1,11 @@
+name = "pingo-chic-api"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "pingo-chic"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+# Configure o segredo administrativo com:
+# npx wrangler secret put ADMIN_TOKEN
