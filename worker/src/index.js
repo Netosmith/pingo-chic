@@ -7,6 +7,24 @@ export default {
     if (url.pathname === '/api/health') return json({ ok: true, service: 'pingo-chic-api' });
     if (!env.DB) return json({ error: 'D1 database not configured' }, 503);
 
+    if (url.pathname === '/api/catalog' && method === 'GET') {
+      const { results: productRows } = await env.DB.prepare(`
+        SELECT * FROM products WHERE active = 1 ORDER BY created_at DESC
+      `).all();
+      const { results: variantRows } = await env.DB.prepare(`
+        SELECT id, product_id, sku, size, color, stock, active
+        FROM product_variants
+        WHERE active = 1
+        ORDER BY product_id, color, size
+      `).all();
+      const variantsByProduct = new Map();
+      for (const variant of variantRows) {
+        if (!variantsByProduct.has(variant.product_id)) variantsByProduct.set(variant.product_id, []);
+        variantsByProduct.get(variant.product_id).push(variant);
+      }
+      return json({ products: productRows.map(row => ({ ...normalizeProduct(row), variants: variantsByProduct.get(row.id) || [] })) });
+    }
+
     if (url.pathname === '/api/products' && method === 'GET') {
       const admin = url.searchParams.get('admin') === '1';
       if (admin && !isAdmin(request, env)) return json({ error: 'Unauthorized' }, 401);
