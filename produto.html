@@ -1,1 +1,102 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Produto | Pingo Chic</title><link rel="stylesheet" href="assets/css/app.css"><link rel="stylesheet" href="assets/css/responsive.css"></head><body><div class="announcement">Pingo Chic | Moda Infantil</div><main class="shell section-block"><a class="brand" href="index.html"><span class="brand-mark">P</span><span class="brand-copy"><strong>Pingo Chic</strong><small>Moda Infantil</small></span></a><section style="margin-top:40px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:var(--shadow)"><span class="eyebrow">Página de produto</span><h1 style="font-size:46px">Detalhes do produto</h1><p style="color:var(--muted);line-height:1.7;max-width:720px">Esta rota já está reservada para a versão oficial com galeria de fotos, variações de tamanho e cor, estoque, guia de medidas, avaliações e recomendação de tamanho.</p><a class="btn primary" href="index.html">Voltar para a loja</a></section></main></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Detalhes do produto Pingo Chic Moda Infantil.">
+  <title>Produto | Pingo Chic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <link rel="stylesheet" href="assets/css/product.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div class="announcement">Frete grátis acima de R$ 150 • Compra segura • Pingo Chic</div>
+  <header class="site-header">
+    <div class="shell header-grid product-header-grid">
+      <a class="brand" href="index.html" aria-label="Voltar para a Pingo Chic">
+        <span class="brand-mark">P</span>
+        <span class="brand-copy"><strong>Pingo Chic</strong><small>Moda Infantil</small></span>
+      </a>
+      <a class="back-store" href="index.html">← Continuar comprando</a>
+      <div class="quick-actions">
+        <button class="icon-button" id="favoriteTop" aria-label="Favoritar">♡</button>
+        <a class="cart-button" href="checkout.html">Sacola <span id="cartCount">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell product-page">
+    <nav class="breadcrumb" aria-label="Navegação"><a href="index.html">Início</a><span>›</span><a href="index.html#produtos">Produtos</a><span>›</span><strong id="crumbName">Produto</strong></nav>
+
+    <section class="product-layout" id="productRoot">
+      <div class="product-gallery">
+        <div class="gallery-main" id="galleryMain"><span id="mainIcon">👗</span><small>Foto principal do produto</small></div>
+        <div class="gallery-thumbs" id="galleryThumbs"></div>
+      </div>
+
+      <div class="product-info">
+        <div class="product-meta-line"><span class="product-badge" id="productBadge">Novidade</span><span id="productRating">★ 4,9 (0 avaliações)</span></div>
+        <h1 id="productName">Produto Pingo Chic</h1>
+        <p class="product-description" id="productDescription"></p>
+
+        <div class="product-price-block">
+          <div class="product-price-line"><strong id="productPrice">R$ 0,00</strong><s id="productOldPrice"></s></div>
+          <span id="productInstallments">ou 3x sem juros</span>
+        </div>
+
+        <div class="selector-block">
+          <div class="selector-title"><strong>Cor</strong><span id="selectedColor">Selecione</span></div>
+          <div class="choice-row" id="colorChoices"></div>
+        </div>
+
+        <div class="selector-block">
+          <div class="selector-title"><strong>Tamanho</strong><button class="guide-link" id="openGuide">Guia de medidas</button></div>
+          <div class="choice-row" id="sizeChoices"></div>
+          <div class="size-recommendation">💡 Dica: use o guia de medidas para comparar altura e idade antes de escolher.</div>
+        </div>
+
+        <div class="stock-line" id="stockLine">Selecione cor e tamanho para consultar o estoque.</div>
+
+        <div class="buy-row">
+          <label class="qty-control">Qtd.<input id="qtyInput" type="number" min="1" value="1"></label>
+          <button class="btn primary product-buy" id="addProduct">Adicionar à sacola</button>
+          <button class="favorite-large" id="favoriteProduct" aria-label="Adicionar aos favoritos">♡</button>
+        </div>
+
+        <div class="trust-grid">
+          <article><span>🚚</span><div><strong>Entrega para todo o Brasil</strong><small>Frete calculado no checkout</small></div></article>
+          <article><span>🔄</span><div><strong>Troca descomplicada</strong><small>Consulte nossa política</small></div></article>
+          <article><span>🔒</span><div><strong>Compra protegida</strong><small>Pagamento processado com segurança</small></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="product-details-section">
+      <div>
+        <span class="eyebrow">Sobre a peça</span>
+        <h2>Detalhes pensados para acompanhar a infância</h2>
+      </div>
+      <ul id="detailList"></ul>
+    </section>
+  </main>
+
+  <dialog class="size-dialog" id="sizeDialog">
+    <button class="dialog-close" id="closeGuide" aria-label="Fechar">×</button>
+    <span class="eyebrow">Guia de medidas</span>
+    <h2>Encontre o tamanho ideal</h2>
+    <p>As medidas abaixo são uma referência inicial. Para maior precisão, compare com uma peça que já veste bem a criança.</p>
+    <div class="size-table-wrap">
+      <table>
+        <thead><tr><th>Tamanho</th><th>Idade aproximada</th><th>Altura</th></tr></thead>
+        <tbody><tr><td>2</td><td>1–2 anos</td><td>86–92 cm</td></tr><tr><td>4</td><td>3–4 anos</td><td>98–104 cm</td></tr><tr><td>6</td><td>5–6 anos</td><td>110–116 cm</td></tr><tr><td>8</td><td>7–8 anos</td><td>122–128 cm</td></tr><tr><td>10</td><td>9–10 anos</td><td>134–140 cm</td></tr><tr><td>12</td><td>11–12 anos</td><td>146–152 cm</td></tr></tbody>
+      </table>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast"></div>
+  <script type="module" src="assets/js/product.js"></script>
+</body>
+</html>
