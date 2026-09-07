@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin | Pingo Chic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+  <aside class="admin-sidebar">
+    <a class="admin-brand" href="../index.html"><span>P</span><div><strong>Pingo Chic</strong><small>Admin</small></div></a>
+    <nav>
+      <button class="active">📦 Produtos</button>
+      <button disabled>🧾 Pedidos <small>em breve</small></button>
+      <button disabled>👥 Clientes <small>em breve</small></button>
+      <button disabled>🏷️ Cupons <small>em breve</small></button>
+    </nav>
+    <a class="store-link" href="../index.html">← Ver loja</a>
+  </aside>
+
+  <main class="admin-main">
+    <header class="admin-topbar">
+      <div><span class="eyebrow">Pingo Chic</span><h1>Produtos</h1><p>Cadastre e edite o catálogo da loja.</p></div>
+      <button class="primary" id="newProduct">+ Novo produto</button>
+    </header>
+
+    <section class="connection-card" id="connectionCard">
+      <div><strong>Conectar ao Admin</strong><p>Informe a URL da API e o token administrativo configurado no Cloudflare Worker.</p></div>
+      <div class="connection-form"><input id="apiUrl" placeholder="https://api.seudominio.com"><input id="adminToken" type="password" placeholder="Token administrativo"><button id="connectAdmin">Conectar</button></div>
+      <small>O token é mantido somente nesta sessão do navegador e não fica gravado no repositório.</small>
+    </section>
+
+    <section class="admin-stats">
+      <article><span>Produtos</span><strong id="statProducts">0</strong></article>
+      <article><span>Ativos</span><strong id="statActive">0</strong></article>
+      <article><span>Estoque total</span><strong id="statStock">0</strong></article>
+    </section>
+
+    <section class="products-panel">
+      <div class="panel-tools"><input id="productSearch" placeholder="Buscar produto..."><button id="refreshProducts">Atualizar</button></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Produto</th><th>Categoria</th><th>Preço</th><th>Estoque</th><th>Status</th><th></th></tr></thead>
+          <tbody id="productsBody"><tr><td colspan="6" class="empty">Conecte a API para carregar os produtos.</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="productDialog" class="product-dialog">
+    <form id="productForm">
+      <header><div><span class="eyebrow">Catálogo</span><h2 id="dialogTitle">Novo produto</h2></div><button type="button" class="close" id="closeDialog">×</button></header>
+      <input type="hidden" id="productId">
+      <div class="form-grid">
+        <label class="wide">Nome<input id="name" required></label>
+        <label>Slug<input id="slug" required></label>
+        <label>Categoria<input id="category" required placeholder="vestido, conjunto..."></label>
+        <label>Tema<select id="theme"><option value="fem">Menina</option><option value="masc">Menino</option><option value="unissex">Unissex</option></select></label>
+        <label>Selo<input id="badge" placeholder="Novidade"></label>
+        <label>Preço<input id="price" type="number" min="0" step="0.01" required></label>
+        <label>Preço anterior<input id="oldPrice" type="number" min="0" step="0.01"></label>
+        <label>Avaliação<input id="rating" type="number" min="0" max="5" step="0.1" value="5"></label>
+        <label>Nº avaliações<input id="reviewsCount" type="number" min="0" value="0"></label>
+        <label class="wide">Descrição<textarea id="description" rows="4"></textarea></label>
+        <label class="wide">Detalhes <small>um por linha</small><textarea id="details" rows="4"></textarea></label>
+        <label class="wide">Imagens <small>uma URL por linha</small><textarea id="images" rows="4"></textarea></label>
+        <label class="toggle wide"><input id="active" type="checkbox" checked><span>Produto ativo na loja</span></label>
+      </div>
+      <footer><button type="button" class="danger hidden" id="archiveProduct">Arquivar produto</button><div></div><button type="button" id="cancelDialog">Cancelar</button><button class="primary" type="submit">Salvar produto</button></footer>
+    </form>
+  </dialog>
+
+  <div class="toast" id="adminToast"></div>
+  <script type="module" src="../assets/js/admin.js"></script>
+</body>
+</html>
