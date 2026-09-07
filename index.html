@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Pingo Chic | Moda infantil com charme, conforto e carinho." />
+  <meta name="theme-color" content="#EE6FA8" />
+  <title>Pingo Chic | Moda Infantil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/app.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+</head>
+<body>
+  <div class="announcement">Frete grátis em compras acima de R$ 150</div>
+
+  <header class="site-header">
+    <div class="shell header-grid">
+      <a class="brand" href="index.html" aria-label="Pingo Chic - início">
+        <span class="brand-mark">P</span>
+        <span class="brand-copy"><strong>Pingo Chic</strong><small>Moda Infantil</small></span>
+      </a>
+
+      <form class="search" id="searchForm" role="search">
+        <input id="searchInput" type="search" placeholder="Buscar roupas, conjuntos, acessórios..." aria-label="Buscar produtos" />
+        <button type="submit" aria-label="Buscar">⌕</button>
+      </form>
+
+      <nav class="quick-actions" aria-label="Ações da conta">
+        <button class="icon-button" type="button" data-action="account">Conta</button>
+        <button class="icon-button" type="button" data-action="favorites">♡</button>
+        <button class="cart-button" type="button" data-action="cart">Sacola <span id="cartCount">0</span></button>
+      </nav>
+    </div>
+
+    <div class="category-bar">
+      <div class="shell categories" id="categoryNav">
+        <button class="category active" data-category="todos">Novidades</button>
+        <button class="category" data-category="fem">Menina</button>
+        <button class="category" data-category="masc">Menino</button>
+        <button class="category" data-category="conjunto">Conjuntos</button>
+        <button class="category" data-category="acessorio">Acessórios</button>
+        <button class="category sale" data-category="oferta">Ofertas</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div class="hero-copy">
+        <span class="eyebrow">Nova coleção</span>
+        <h1>Looks feitos para brincar, sorrir e guardar na memória.</h1>
+        <p>Peças infantis confortáveis, delicadas e cheias de personalidade para acompanhar cada aventura.</p>
+        <div class="hero-actions">
+          <button class="btn primary" data-filter-theme="fem">Comprar menina</button>
+          <button class="btn secondary" data-filter-theme="masc">Comprar menino</button>
+        </div>
+        <div class="benefit-row">
+          <span>✓ Compra segura</span>
+          <span>✓ Troca facilitada</span>
+          <span>✓ Envio para todo o Brasil</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Espaço para foto principal da coleção">
+        <div class="hero-bubble bubble-a"></div>
+        <div class="hero-bubble bubble-b"></div>
+        <div class="hero-photo-placeholder">
+          <span>Foto da coleção</span>
+          <small>assets/img/hero/</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell section-block">
+      <div class="section-heading">
+        <div><span class="eyebrow">Escolha seu universo</span><h2>Moda para cada jeitinho</h2></div>
+      </div>
+      <div class="world-grid">
+        <button class="world-card world-girl" data-filter-theme="fem">
+          <span>Menina</span><strong>Delicadeza com liberdade para brincar</strong><small>Ver coleção →</small>
+        </button>
+        <button class="world-card world-boy" data-filter-theme="masc">
+          <span>Menino</span><strong>Conforto para pequenas grandes aventuras</strong><small>Ver coleção →</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="shell section-block" id="catalogo">
+      <div class="section-heading catalog-heading">
+        <div><span class="eyebrow">Queridinhos da Pingo Chic</span><h2>Novidades</h2></div>
+        <button class="text-link" id="showAllProducts">Ver todos</button>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-state hidden" id="emptyState">Nenhum produto encontrado. Tente outro termo ou categoria.</div>
+    </section>
+
+    <section class="shell feature-strip">
+      <article><span>📦</span><div><strong>Frete grátis</strong><small>Acima de R$ 150</small></div></article>
+      <article><span>↻</span><div><strong>Troca facilitada</strong><small>Compra mais tranquila</small></div></article>
+      <article><span>🔒</span><div><strong>Pagamento seguro</strong><small>Checkout protegido</small></div></article>
+      <article><span>💬</span><div><strong>Atendimento próximo</strong><small>Fale com a Pingo Chic</small></div></article>
+    </section>
+
+    <section class="shell newsletter">
+      <div><span class="eyebrow">Clube Pingo Chic</span><h2>Receba novidades e ofertas especiais</h2><p>Cadastre seu e-mail para acompanhar lançamentos e promoções.</p></div>
+      <form id="newsletterForm"><input type="email" required placeholder="seuemail@exemplo.com"><button class="btn primary" type="submit">Quero receber</button></form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div><a class="brand footer-brand" href="index.html"><span class="brand-mark">P</span><span class="brand-copy"><strong>Pingo Chic</strong><small>Moda Infantil</small></span></a><p>Moda infantil escolhida com carinho para momentos que passam rápido demais.</p></div>
+      <div><strong>Ajuda</strong><a href="#">Trocas e devoluções</a><a href="#">Frete e entrega</a><a href="#">Formas de pagamento</a><a href="#">Guia de tamanhos</a></div>
+      <div><strong>Pingo Chic</strong><a href="#">Sobre a loja</a><a href="#">Contato</a><a href="#">Instagram</a><a href="#">Política de privacidade</a></div>
+      <div><strong>Atendimento</strong><p>WhatsApp em breve</p><p>Segunda a sexta</p><p>09h às 18h</p></div>
+    </div>
+    <div class="shell footer-bottom">© 2026 Pingo Chic. Todos os direitos reservados.</div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer-head"><div><span class="eyebrow">Sua compra</span><h2>Sacola</h2></div><button type="button" class="drawer-close" data-action="close-cart">×</button></div>
+    <div class="drawer-body" id="cartItems"></div>
+    <div class="drawer-footer"><div class="cart-total"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></div><a class="btn primary full" href="checkout.html">Ir para o checkout</a></div>
+  </aside>
+  <div class="scrim" id="scrim" data-action="close-cart"></div>
+
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
